@@ -40,7 +40,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    int num = event.message.text
+    num = int(event.message.text)
     num = random.randrange(num)
     line_bot_api.reply_message(
         event.reply_token,

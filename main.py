@@ -10,7 +10,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 import os
-
+import random
 app = Flask(__name__)
 
 #環境変数取得
@@ -40,9 +40,11 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    int num = event.message.text
+    num = random.randrange(num)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(num))
 
 
 if __name__ == "__main__":
